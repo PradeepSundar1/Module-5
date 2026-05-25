@@ -1,88 +1,64 @@
-# Hierarchical Inheritance in Python
+# Arithmetic Operations Using Multiple Inheritance in Python
 
-This Python project demonstrates **Hierarchical Inheritance** using a base class `Details` and two derived classes `Employee` and `Patient`. The program collects and displays details for both employees and patients.
+This Python program demonstrates **multiple inheritance** by performing basic arithmetic operations — Addition, Subtraction, and Division — using three classes.
 
 ## 🎯 Aim
 
-To write a Python program that uses **Hierarchical Inheritance** to input and display **Employee** and **Patient** details.
-
-## 📘 Description
-
-- **Base Class:** `Details`
-  - Stores common attributes: `name`, `age`
-  - Provides methods: `getName()`, `getAge()`
-
-- **Derived Class 1:** `Employee`
-  - Inherits from `Details`
-  - Adds: `employee_id`, `department`
-  - Method: `getEmployeeDetails()`
-
-- **Derived Class 2:** `Patient`
-  - Inherits from `Details`
-  - Adds: `patient_id`, `disease`
-  - Method: `getPatientDetails()`
+To write a Python program to calculate **Add, Sub & Division** using **Multiple Inheritance**.
 
 ## 🧠 Algorithm
 
-1. Create base class `Details` with common attributes.
-2. Create `Employee` class extending `Details`, adding employee-specific data.
-3. Create `Patient` class extending `Details`, adding patient-specific data.
-4. Get user input for employee and patient data.
-5. Display collected information using class methods.
+1. **Define `Calculation1` class**
+   - Contains `Summation(a, b)` method to return the sum of two numbers.
+2. **Define `Calculation2` class**
+   - Contains `Subtraction(a, b)` method to return the difference of two numbers.
+3. **Define `Derived` class**
+   - Inherits from both `Calculation1` and `Calculation2`.
+   - Contains `Division(a, b)` method to return the division result.
+4. **Input**
+   - Prompt the user to enter two numbers.
+5. **Process**
+   - Create an object of the `Derived` class.
+   - Call `Summation`, `Subtraction`, and `Division` methods.
+6. **Output**
+   - Display the results of the three operations.
 
-## Program
+## 💻 Program 
 ```
-class Details:
-    def getName(self):
-        self.name = input("Enter name: ")
-    
-    def getAge(self):
-        self.age = int(input("Enter age: "))
+# Class 1
+class Calculation1:
+    def Summation(self, a, b):
+        return a + b
 
 
-# Derived class 1
-class Employee(Details):
-    def getEmployeeDetails(self):
-        self.getName()
-        self.getAge()
-        self.employee_id = input("Enter employee ID: ")
-        self.department = input("Enter department: ")
-
-    def showEmployee(self):
-        print("\n--- Employee Details ---")
-        print("Name:", self.name)
-        print("Age:", self.age)
-        print("Employee ID:", self.employee_id)
-        print("Department:", self.department)
+# Class 2
+class Calculation2:
+    def Subtraction(self, a, b):
+        return a - b
 
 
-# Derived class 2
-class Patient(Details):
-    def getPatientDetails(self):
-        self.getName()
-        self.getAge()
-        self.patient_id = input("Enter patient ID: ")
-        self.disease = input("Enter disease: ")
-
-    def showPatient(self):
-        print("\n--- Patient Details ---")
-        print("Name:", self.name)
-        print("Age:", self.age)
-        print("Patient ID:", self.patient_id)
-        print("Disease:", self.disease)
+# Derived class (Multiple Inheritance)
+class Derived(Calculation1, Calculation2):
+    def Division(self, a, b):
+        if b != 0:
+            return a / b
+        else:
+            return "Division by zero not allowed"
 
 
-# Create objects
-emp = Employee()
-pat = Patient()
+# Input
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
 
-# Get details
-emp.getEmployeeDetails()
-pat.getPatientDetails()
+# Object creation
+obj = Derived()
 
-# Display details
-emp.showEmployee()
-pat.showPatient()
+# Output
+print("\n--- Results ---")
+print("Addition:", obj.Summation(a, b))
+print("Subtraction:", obj.Subtraction(a, b))
+print("Division:", obj.Division(a, b))
 ```
-## Sample Output
-<img width="629" height="837" alt="image" src="https://github.com/user-attachments/assets/9d5eda9e-e402-451b-9b64-44f0904509e7" />
+
+## Output Example
+<img width="606" height="438" alt="image" src="https://github.com/user-attachments/assets/ae268800-befd-4261-be0d-9edd4d73622f" />
